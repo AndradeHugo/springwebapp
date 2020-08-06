@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +23,13 @@ public class Autor {
     private String lastName;
 
     @ManyToMany(mappedBy = "autores")
-    private Set<Livro> livros;
+    private Set<Livro> livros = new HashSet<>();
+
+
+    public Autor(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public String toString() {

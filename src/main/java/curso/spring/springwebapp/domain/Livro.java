@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,9 +25,15 @@ public class Livro {
     private String isbn;
 
     @ManyToMany
-    @JoinTable(name = "autor_livro", @JoinColumns(name = "livro_id"),
-                inverseJoinColumns = @JoinColumns(name = "autor_id"))
-    private Set<Autor> autores;
+    @JoinTable(name = "autor_livro", joinColumns = @JoinColumn(name = "livro_id"),
+                inverseJoinColumns = @JoinColumn(name = "autor_id"))
+    private Set<Autor> autores = new HashSet<>();
+
+
+    public Livro(String titulo, String isbn) {
+        this.titulo = titulo;
+        this.isbn = isbn;
+    }
 
     @Override
     public String toString() {
