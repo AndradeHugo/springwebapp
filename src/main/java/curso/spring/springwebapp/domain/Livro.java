@@ -24,6 +24,9 @@ public class Livro {
     private String titulo;
     private String isbn;
 
+    @ManyToOne
+    private Editora editora;
+
     @ManyToMany
     @JoinTable(name = "autor_livro", joinColumns = @JoinColumn(name = "livro_id"),
                 inverseJoinColumns = @JoinColumn(name = "autor_id"))

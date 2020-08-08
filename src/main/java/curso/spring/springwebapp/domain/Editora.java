@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +19,18 @@ public class Editora {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToMany
+    @JoinColumn(name = "editora_id")
+    private Set<Livro> livros = new HashSet<Livro>();
+
+    private String nome;
     private String enderecoLinha1;
     private String cidade;
     private String estado;
     private String cep;
 
-    public Editora(String enderecoLinha1, String cidade, String estado, String cep) {
+    public Editora(String nome, String enderecoLinha1, String cidade, String estado, String cep) {
+        this.nome = nome;
         this.enderecoLinha1 = enderecoLinha1;
         this.cidade = cidade;
         this.estado = estado;
@@ -36,6 +41,8 @@ public class Editora {
     public String toString() {
         return "Editora{" +
                 "id=" + id +
+                ", livros=" + livros +
+                ", nome='" + nome + '\'' +
                 ", enderecoLinha1='" + enderecoLinha1 + '\'' +
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
