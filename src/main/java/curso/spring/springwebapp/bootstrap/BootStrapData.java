@@ -6,21 +6,17 @@ import curso.spring.springwebapp.domain.Livro;
 import curso.spring.springwebapp.repositories.AutorRepository;
 import curso.spring.springwebapp.repositories.EditoraRepository;
 import curso.spring.springwebapp.repositories.LivroRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class BootStrapData implements CommandLineRunner {
 
     private final AutorRepository autorRepository;
     private final LivroRepository livroRepository;
     private final EditoraRepository editoraRepository;
-
-    public BootStrapData(AutorRepository autorRepository, LivroRepository livroRepository, EditoraRepository editoraRepository) {
-        this.autorRepository = autorRepository;
-        this.livroRepository = livroRepository;
-        this.editoraRepository = editoraRepository;
-    }
 
     @Override
     public void run(String... args) throws Exception {

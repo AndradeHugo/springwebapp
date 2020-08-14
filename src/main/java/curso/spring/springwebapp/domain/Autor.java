@@ -1,6 +1,7 @@
 package curso.spring.springwebapp.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +10,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
@@ -25,20 +25,9 @@ public class Autor {
     @ManyToMany(mappedBy = "autores")
     private Set<Livro> livros = new HashSet<>();
 
-
     public Autor(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "Autor{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", livros=" + livros +
-                '}';
     }
 
     @Override

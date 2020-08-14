@@ -1,15 +1,12 @@
 package curso.spring.springwebapp.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
@@ -38,19 +35,6 @@ public class Editora {
     }
 
     @Override
-    public String toString() {
-        return "Editora{" +
-                "id=" + id +
-                ", livros=" + livros +
-                ", nome='" + nome + '\'' +
-                ", enderecoLinha1='" + enderecoLinha1 + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                ", cep='" + cep + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -62,4 +46,5 @@ public class Editora {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
